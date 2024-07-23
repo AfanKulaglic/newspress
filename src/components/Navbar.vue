@@ -1,5 +1,6 @@
 <template>
-  <div v-if="isDesktop">
+  <div v-if="isDesktop" class="nav">
+    <b-container>
     <b-navbar toggleable="lg" type="light" variant="light">
       <b-navbar-brand href="#">
         <img src="../images/logo.png" />
@@ -77,7 +78,8 @@
         </b-collapse>
       </div>
     </b-navbar>
-  </div>
+  </b-container>
+  </div >
 
   <div toggleable="lg" type="light" variant="light" v-else>
     <p>jashdjhsadj</p>

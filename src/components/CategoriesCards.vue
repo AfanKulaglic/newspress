@@ -2,16 +2,16 @@
     <div>
         <div v-if="isDesktop" class="categories-cards">
             <b-row>
+                <!-- Worlds Column -->
                 <b-col cols="6">
                     <h4>Worlds</h4>
                     <hr />
                     <hr id="red-hr" />
-                    <div class="card-content">
+                    <div class="card-content" v-for="(item, index) in worlds" :key="'world-' + index">
                         <div class="card">
                             <div class="card-img-container">
-                                <img src="https://themes.themeregion.com/newspress/wp-content/uploads/2016/03/10-1-1-1024x586.jpg"
-                                    class="card-img-top" alt="...">
-                                <b-badge class="badge" variant="danger">New</b-badge>
+                                <img :src="item.imgSrc" class="card-img-top" alt="...">
+                                <b-badge class="badge" variant="danger">{{ item.badgeText }}</b-badge>
                             </div>
                         </div>
                         <div class="card-body">
@@ -20,27 +20,20 @@
                             <p class="card-title">{{ item.description }}</p>
                         </div>
                         <b-list-group class="list-group">
-                            <b-list-group-item class="list-group-item">
-                                Cras justo odio <i class="bi bi-arrow-right-short"></i></b-list-group-item>
-                            <b-list-group-item class="list-group-item">
-                                Dapibus ac facilisis in <i class="bi bi-arrow-right-short"></i></b-list-group-item>
-                            <b-list-group-item class="list-group-item">
-                                Morbi leo risus <i class="bi bi-arrow-right-short"></i></b-list-group-item>
-                            <b-list-group-item class="list-group-item">
-                                Porta ac consectetur ac <i class="bi bi-arrow-right-short"></i></b-list-group-item>
-                            <b-list-group-item class="list-group-item">
-                                Vestibulum at eros <i class="bi bi-arrow-right-short"></i></b-list-group-item>
-                          </b-list-group>
+                            <b-list-group-item class="list-group-item" v-for="(listItem, i) in item.listItems" :key="'list-item-' + i">
+                                {{ listItem.text }} <i class="bi bi-arrow-right-short"></i>
+                            </b-list-group-item>
+                        </b-list-group>
                     </div>
+                    <!-- Technology Section -->
                     <h4>Technology</h4>
                     <hr />
                     <hr id="red-hr" />
-                    <div class="card-content">
+                    <div class="card-content" v-for="(item, index) in technology" :key="'tech-' + index">
                         <div class="card">
                             <div class="card-img-container">
-                                <img src="https://themes.themeregion.com/newspress/wp-content/uploads/2016/03/10-1-1-1024x586.jpg"
-                                    class="card-img-top" alt="...">
-                                <b-badge class="badge" variant="danger">New</b-badge>
+                                <img :src="item.imgSrc" class="card-img-top" alt="...">
+                                <b-badge class="badge" variant="danger">{{ item.badgeText }}</b-badge>
                             </div>
                         </div>
                         <div class="card-body">
@@ -52,46 +45,38 @@
                     <p class="advertisement-span">Advertisement</p>
                     <div class="img-col-add-prime"
                         style="background-image: url(https://themes.themeregion.com/newspress/wp-content/uploads/2016/03/add4.jpg);">
-
                     </div>
+                    <h4>Lifestyle</h4>
+                    <hr />
+                    <hr id="red-hr" />
+                    <b-row>
+                        <b-col v-for="(item, index) in lifestyle" :key="'more-item-' + index">
+                            <div class="card-content">
+                                <div class="card">
+                                    <div class="card-img-container">
+                                        <img :src="item.imgSrc" class="card-img-top" alt="...">
+                                        <b-badge class="badge" variant="danger">{{ item.badgeText }}</b-badge>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">{{ item.details }}</p>
+                                    <h6 class="card-title">{{ item.title }}</h6>
+                                </div>
+                            </div>
+                        </b-col>
+                    </b-row>
                 </b-col>
+                <!-- Sports Column -->
                 <b-col cols="3">
                     <h4>Sports</h4>
                     <hr />
                     <hr id="red-hr" />
                     <div class="d-flex flex-column">
-                        <div class="card-content">
+                        <div class="card-content" v-for="(item, index) in sports" :key="'sports-' + index">
                             <div class="card">
                                 <div class="card-img-container">
-                                    <img src="https://themes.themeregion.com/newspress/wp-content/uploads/2016/03/10-1-1-1024x586.jpg"
-                                        class="card-img-top" alt="...">
-                                    <b-badge class="badge" variant="danger">New</b-badge>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <p class="card-text">{{ item.details }}</p>
-                                <h6 class="card-title">{{ item.title }}</h6>
-                            </div>
-                        </div>
-                        <div class="card-content">
-                            <div class="card">
-                                <div class="card-img-container">
-                                    <img src="https://themes.themeregion.com/newspress/wp-content/uploads/2016/03/10-1-1-1024x586.jpg"
-                                        class="card-img-top" alt="...">
-                                    <b-badge class="badge" variant="danger">New</b-badge>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <p class="card-text">{{ item.details }}</p>
-                                <h6 class="card-title">{{ item.title }}</h6>
-                            </div>
-                        </div>
-                        <div class="card-content">
-                            <div class="card">
-                                <div class="card-img-container">
-                                    <img src="https://themes.themeregion.com/newspress/wp-content/uploads/2016/03/10-1-1-1024x586.jpg"
-                                        class="card-img-top" alt="...">
-                                    <b-badge class="badge" variant="danger">New</b-badge>
+                                    <img :src="item.imgSrc" class="card-img-top" alt="...">
+                                    <b-badge class="badge" variant="danger">{{ item.badgeText }}</b-badge>
                                 </div>
                             </div>
                             <div class="card-body">
@@ -102,14 +87,12 @@
                         <p class="advertisement-span">Advertisement</p>
                         <div class="img-col-add-exclusive"
                             style="background-image: url(https://themes.themeregion.com/newspress/wp-content/uploads/2016/03/add5.jpg);">
-
                         </div>
-                        <div class="card-content">
+                        <div class="card-content" v-for="(item, index) in sports" :key="'more-sports-' + index">
                             <div class="card">
                                 <div class="card-img-container">
-                                    <img src="https://themes.themeregion.com/newspress/wp-content/uploads/2016/03/10-1-1-1024x586.jpg"
-                                        class="card-img-top" alt="...">
-                                    <b-badge class="badge" variant="danger">New</b-badge>
+                                    <img :src="item.imgSrc" class="card-img-top" alt="...">
+                                    <b-badge class="badge" variant="danger">{{ item.badgeText }}</b-badge>
                                 </div>
                             </div>
                             <div class="card-body">
@@ -119,6 +102,7 @@
                         </div>
                     </div>
                 </b-col>
+                <!-- Follow Us Column -->
                 <b-col cols="3">
                     <h4>Follow Us</h4>
                     <hr />
@@ -132,55 +116,26 @@
                     <p class="advertisement-span">Advertisement</p>
                     <div class="img-col-add-elite"
                         style="background-image: url(https://themes.themeregion.com/newspress/wp-content/uploads/2016/03/add3.jpg);">
-
                     </div>
                     <div class="col-weather">
                         <h5>Sarajevo</h5>
                         <img src="http://openweathermap.org/img/w/04d.png" />
                         <p>26°</p>
                         <div class="d-flex justify-content-center">
-                        <i class="bi bi-droplet-fill"></i>
-                        <p>50%</p>
-                        <i class="bi bi-wind"></i>
-                        <p>5 MPH</p>
+                            <i class="bi bi-droplet-fill"></i>
+                            <p>50%</p>
+                            <i class="bi bi-wind"></i>
+                            <p>5 MPH</p>
                         </div>
                     </div>
-                    
                     <h4>Popular News</h4>
                     <hr />
                     <hr id="red-hr" />
-                    <div class="card-content">
+                    <div class="card-content" v-for="(item, index) in popularNews" :key="'popular-news-' + index">
                         <div class="card">
                             <div class="card-img-container">
-                                <img src="https://themes.themeregion.com/newspress/wp-content/uploads/2016/03/10-1-1-1024x586.jpg"
-                                    class="card-img-top" alt="...">
-                                <b-badge class="badge" variant="danger">New</b-badge>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <p class="card-text">{{ item.details }}</p>
-                            <h6 class="card-title">{{ item.title }}</h6>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <div class="card">
-                            <div class="card-img-container">
-                                <img src="https://themes.themeregion.com/newspress/wp-content/uploads/2016/03/10-1-1-1024x586.jpg"
-                                    class="card-img-top" alt="...">
-                                <b-badge class="badge" variant="danger">New</b-badge>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <p class="card-text">{{ item.details }}</p>
-                            <h6 class="card-title">{{ item.title }}</h6>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <div class="card">
-                            <div class="card-img-container">
-                                <img src="https://themes.themeregion.com/newspress/wp-content/uploads/2016/03/10-1-1-1024x586.jpg"
-                                    class="card-img-top" alt="...">
-                                <b-badge class="badge" variant="danger">New</b-badge>
+                                <img :src="item.imgSrc" class="card-img-top" alt="...">
+                                <b-badge class="badge" variant="danger">{{ item.badgeText }}</b-badge>
                             </div>
                         </div>
                         <div class="card-body">
@@ -191,7 +146,6 @@
                     <p class="advertisement-span">Advertisement</p>
                     <div class="img-col-add-elite"
                         style="background-image: url(https://themes.themeregion.com/newspress/wp-content/uploads/2016/03/add6.jpg);">
-
                     </div>
                 </b-col>
             </b-row>
@@ -207,38 +161,89 @@ export default {
     data() {
         return {
             isDesktop: true,
-            item: { // Primer podatka, prilagodi prema potrebi
-                description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo',
-                title: 'Ut Enim Ad Minim Veniam Quis Nostrud',
-                details: 'Mar 12, 2017 2.4k'
-            }
-        };
-    },
-    mounted() {
-        this.setDeviceType();
-        window.addEventListener("resize", this.setDeviceType);
-    },
-    beforeDestroy() { // ili beforeUnmount za Vue 3
-        window.removeEventListener("resize", this.setDeviceType);
-    },
-    methods: {
-        setDeviceType() {
-            this.isDesktop = window.matchMedia("(min-width: 992px)").matches;
-        },
-    },
-};
+            worlds: [
+                {
+                    imgSrc: 'https://themes.themeregion.com/newspress/wp-content/uploads/2016/03/10-1-1-1024x586.jpg',
+                    badgeText: 'New',
+                    details: 'Mar 12, 2017 2.4k',
+                    title: 'Ut Enim Ad Minim Veniam Quis Nostrud',
+                    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                    listItems: [
+                        { text: 'Item 1' },
+                        { text: 'Item 2' },
+                        { text: 'Item 3' }
+                    ]
+                }
+            ],
+            technology: [
+                {
+                    imgSrc: 'https://themes.themeregion.com/newspress/wp-content/uploads/2016/03/10-1-1-1024x586.jpg',
+                    badgeText: 'New',
+                    details: 'Mar 12, 2017 2.4k',
+                    title: 'Ut Enim Ad Minim Veniam Quis Nostrud',
+                    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+                }
+            ],
+            sports: [
+                {
+                    imgSrc: 'https://themes.themeregion.com/newspress/wp-content/uploads/2016/03/10-1-1-1024x586.jpg',
+                    badgeText: 'Sports',
+                    details: 'Mar 12, 2017 2.4k',
+                    title: 'Ut Enim Ad Minim Veniam Quis Nostrud',
+                },
+                {
+                    imgSrc: 'https://themes.themeregion.com/newspress/wp-content/uploads/2016/03/10-1-1-1024x586.jpg',
+                    badgeText: 'Sports',
+                    details: 'Feb 18, 2023 1.2k',
+                    title: 'More Sports 1'
+                }
+            ],
+            popularNews: [
+                {
+                    imgSrc: 'https://themes.themeregion.com/newspress/wp-content/uploads/2016/03/10-1-1-1024x586.jpg',
+                    badgeText: 'Popular',
+                    details: 'Mar 12, 2017 2.4k',
+                    title: 'Ut Enim Ad Minim Veniam Quis Nostrud',
+                },
+                {
+                    imgSrc: 'https://themes.themeregion.com/newspress/wp-content/uploads/2016/03/10-1-1-1024x586.jpg',
+                    badgeText: 'Popular',
+                    details: 'Mar 12, 2017 2.4k',
+                    title: 'Ut Enim Ad Minim Veniam Quis Nostrud',
+                }
+            ],
+            lifestyle: [
+                {
+                    imgSrc: 'https://themes.themeregion.com/newspress/wp-content/uploads/2016/03/10-1-1-1024x586.jpg',
+                    badgeText: 'Lifestyle',
+                    details: 'Jan 20, 2023 1.5k',
+                    title: 'More Item 1'
+                },
+                {
+                    imgSrc: 'https://themes.themeregion.com/newspress/wp-content/uploads/2016/03/10-1-1-1024x586.jpg',
+                    badgeText: 'Lifestyle',
+                    details: 'Jan 20, 2023 1.5k',
+                    title: 'More Item 1'
+                }
+            ]
+        }
+    }
+}
 </script>
 
 <style scoped>
 .categories-cards {
-    border: 2px solid red;
-    margin-top: 3vh;
+    margin-top: 2vh;
 
     hr {
         position: relative;
         margin-top: -0.5vh;
         font-weight: 900;
         border: 2px solid gray;
+    }
+
+    h4 {
+        margin-top: 2vh
     }
 
     #red-hr {
@@ -249,8 +254,8 @@ export default {
     }
 
     .card-content {
-        margin-top: 1vh;
-        border: 1px solid red;
+        margin-top: 2vh;
+        border: 1px solid blue;
     }
 
     .card {

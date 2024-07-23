@@ -4,6 +4,16 @@
 	border: 2px solid blue;
 }
 
+.nav {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 1000;
+	display: flex;
+	flex-direction: column;
+}
+
 .Navbar {
 	padding-left: 10vh;
 	padding-right: 10vh;
@@ -143,10 +153,10 @@
 }
 
 .breaking-news-cards {
-	margin-top: 5vh;
+	margin-top: 4vh;
 
 	.img-col {
-		height: 40vh;
+		height: 30vh;
 		width: 100%;
 		background-size: cover;
 		background-repeat: no-repeat;
@@ -222,7 +232,7 @@
 		position: relative;
 		width: 100%;
 		overflow: hidden;
-		height: 40vh;
+		height: 30vh;
 	}
 
 	.carousel {
@@ -316,8 +326,6 @@
 }
 
 .advertisement-card {
-	margin-top: 1vh;
-	border: 2px solid red;
 
 	.advertisement-span {
 		color: gray;
@@ -334,7 +342,6 @@
 }
 
 .latest-news-cards {
-	border: 2px solid red;
 	margin-top: 3vh;
 
 	
