@@ -1,0 +1,45 @@
+<template>
+    <div class="News">
+        <h2>News1</h2>
+        <h2>News</h2>
+        <h2>News</h2>
+        <h2>News</h2>
+        <h2>News</h2>
+        <h2>News</h2>
+        <h2>News</h2>
+        <h2>News</h2>
+        <h2>News</h2>
+        <h2>News</h2>
+        <h2>News</h2>
+        <h2>News</h2>
+        <h2>News</h2>
+        <h2>News</h2>
+        <h2>News</h2>
+        <h2>News</h2>
+        <h2>News</h2>
+        <h2>News</h2>
+        <h2>News</h2>
+        <h2>News</h2>
+        <h2>News</h2>
+        <h2>News</h2>
+        <h2>News</h2>
+        <h2>News</h2>
+        <h2>News</h2>
+        <h2>News</h2>
+        <h2>News</h2>
+        <h2>News</h2>
+        <h2>News</h2>
+        <h2>News</h2>
+        <h2>News</h2>
+        <h2>News</h2>
+        <h2>News</h2>
+        <h2>News</h2>
+        <h2>News</h2>
+        <h2>News</h2>
+        <h2>News</h2>
+        <h2>News2</h2>
+    </div>
+  </template>
+  
+  <script>
+  </script>
