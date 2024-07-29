@@ -21,11 +21,11 @@
 
 .vertical-line {
 	border-left: 1px solid black;
-	/* Line color and width */
+
 	height: 1vh;
-	/* Line height */
+
 	margin: 0 10px;
-	/* Optional: Space around the line */
+
 }
 
 .search-form-enter-active,
@@ -48,11 +48,11 @@
 
 .vertical-line {
 	border-left: 0.2px solid gray;
-	/* Line color and width */
+
 	height: 24px;
-	/* Adjust height as needed */
+
 	margin: 0 10px;
-	/* Optional: Space around the line */
+
 }
 
 .subnavbar {
@@ -111,7 +111,7 @@
 
 .breaking-news-tab {
 	display: flex;
-	margin-top: 5vh;
+	padding-top: 2vh;
 
 	#title {
 		color: white;
@@ -153,7 +153,12 @@
 }
 
 .breaking-news-cards {
-	margin-top: 4vh;
+	margin-top: 2vh;
+	text-shadow:
+        -0.4px -0.4px 0 #000,
+         0.4px -0.4px 0 #000,
+        -0.4px  0.4px 0 #000,
+         0.4px  0.4px 0 #000;
 
 	.img-col {
 		height: 30vh;
@@ -173,13 +178,13 @@
 		bottom: 0;
 		width: 100%;
 		height: 100%;
-		background: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)); /* Linearni gradijent od tamne prema transparentnoj */
-		opacity: 0; /* Početno stanje - nevidljivo */
+		background: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+		opacity: 0;
 		transition: opacity 0.3s ease;
 	}
 	
 	.img-col:hover::after {
-		opacity: 1; /* Prikazuje se kad je hover */
+		opacity: 1;
 	}
 	
 	.add {
@@ -304,11 +309,11 @@
 		position: absolute;
 		bottom: 10px;
 		right: 10px;
-		/* Pomjera indikatore na lijevu stranu */
+	
 		display: flex;
 		gap: 5px;
 		transform: none;
-		/* Uklanja centriranje */
+	
 	}
 
 	.indicator {
@@ -360,17 +365,18 @@
 		padding: 15px;
 	  }
 	  .card {
-		border: 1px solid #ddd;
 		border-radius: 5px;
 		overflow: hidden;
-		position: relative; /* Added to position the badge absolutely within the card */
+		position: relative;
+		height: 30vh;
+		border: 0.1vh solid gray;
 	  }
 	  .card-img-container {
-		position: relative; /* Added to position the badge absolutely within the image */
+		position: relative;
 	  }
 	  .card-img-top {
 		width: 100%;
-		height: auto;
+		height: 15vh;
 	  }
 	  .badge {
 		position: absolute;
@@ -420,10 +426,582 @@
 	  }
 	  
 	  #red-hr {
-		margin-top: -2.2vh;
+		margin-top: -2vh;
 		font-weight: 900;
-		width: 16vh;
+		width: 6vh;
 		border: 2px solid red; 
 	  }
 
+}
+
+.categories-cards {
+    margin-top: 2vh;
+
+    hr {
+        position: relative;
+        margin-top: -0.5vh;
+        font-weight: 900;
+        border: 2px solid gray;
+    }
+
+    h4 {
+        margin-top: 2vh
+    }
+
+    #red-hr {
+		margin-top: -2vh;
+		font-weight: 900;
+		width: 6vh;
+		border: 2px solid red; 
+	  }
+
+    .card-content {
+		border-radius: 5px;
+		border: 0.1vh solid gray;
+    }
+
+	.card-content:not(:first-child) {
+		margin-top: 2vh;
+	}
+
+    .card {
+        border-radius: 5px;
+        overflow: hidden;
+        position: relative;
+       
+    }
+
+    .card-img-container {
+        position: relative;
+       
+    }
+
+    .card-img-top {
+        width: 100%;
+		height: 35vh;
+		object-fit: cover;
+		object-position: center;
+    }
+
+    .badge {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 10;
+        font-size: 1.7vh;
+    }
+
+    .card-body {
+        padding: 15px;
+    }
+
+    .card-title,
+    .card-text {
+        margin: 0px;
+    }
+
+    .bi {
+        font-size: 3.5vh;
+       
+        margin: 0.6vh;
+       
+        background-color: black;
+        color: white;
+        border-radius: 5px;
+        padding: 0.4vh;
+        display: inline-block;
+        text-align: center;
+        line-height: 1;
+        cursor: pointer;
+    }
+
+    .bi-facebook {
+        background: rgb(68, 68, 141);
+    }
+
+    .bi-instagram {
+        background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    }
+
+    .bi-google {
+        background: rgb(133, 3, 3);
+    }
+
+    .bi-twitter {
+        background: skyblue;
+    }
+
+    .bi-youtube {
+        background-color: red;
+    }
+
+    .bi-linkedin {
+        background: rgb(74, 74, 222);
+    }
+
+    .img-col-add-prime {
+        height: 9vh;
+        width: 100%;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+    }
+    
+    .img-col-add-exclusive {
+        height: 27vh;
+        width: 100%;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+    }
+
+    .img-col-add-elite {
+        height: 27vh;
+        width: 100%;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+    }
+
+    .advertisement-span {
+        color: gray;
+        margin-bottom: 0vh;
+        font-size: 1.2vh;
+        text-align: end;
+		margin-top: 1vh;
+    }
+
+    .col-weather {
+        text-align: center;  
+        margin-top: 2vh;
+		border-radius: 5px;
+		border: 0.1vh solid gray;
+
+        .bi {
+            font-size: 1.3vh;
+           
+            margin: 0.6vh;
+           
+            background-color: white;
+            color: gray;
+            border-radius: 5px;
+            padding: 0.4vh;
+            display: inline-block;
+            text-align: center;
+            line-height: 1;
+            cursor: pointer;
+        }
+    }
+
+    .list-group-item {
+        display: flex;
+		font-weight: 550;
+
+        .bi {
+			background-color: white;
+            padding: 0vh;
+			padding-left: 2vh;
+            font-size: 2.5vh;
+           
+            margin: 0.6vh;
+            margin-left: auto;
+           
+            color: gray;
+            border-radius: 5px;
+            display: inline-block;
+            line-height: 1;
+            cursor: pointer;
+        }
+
+    }
+
+    .list-group-item:hover {
+        color: gray;
+
+        .bi {
+            padding: 0vh;
+			padding-left: 2vh;
+            font-size: 2.5vh;
+            margin: 0.6vh;
+            margin-left: auto;
+            color: red;
+            border-radius: 5px;
+            display: inline-block;
+            line-height: 1;
+            cursor: pointer;
+        }
+    }
+
+	.category-popular-news {
+
+		.card-img-top {
+			width: 100%;
+			height: 20vh;
+			object-fit: cover;
+			object-position: center;
+		}
+
+	}
+}
+
+
+.contact-subscribe {
+	margin-top: 10vh;
+  
+	hr {
+	  position: relative;
+	  margin-top: -0.5vh;
+	  font-weight: 900;
+	  border: 2px solid gray;
+	}
+  
+	h4 {
+	  margin-top: 2vh
+	}
+  
+	#red-hr {
+		margin-top: -2vh;
+		font-weight: 900;
+		width: 6vh;
+		border: 2px solid red;
+	}
+  
+	p {
+	  color: gray
+	}
+  
+	.about-us-section {
+	  padding-top: 2vh;
+	  padding-bottom: 2vh;
+  
+	  h6 {
+		font-weight: 600;
+	  }
+  
+	  a {
+		color: gray;
+		text-decoration: none
+	  }
+  
+	  a:hover {
+		cursor: pointer;
+		color: red
+	  }
+	}
+  
+	.weekly-newsletter-section {
+	  padding-top: 2vh;
+	  padding-bottom: 2vh;
+  
+	  input {
+		border: 2px solid white;
+		padding: 1vh;
+		margin-top: 1vh;
+		padding-right: 7vh;
+		padding-left: 2.5vh;
+	  }
+  
+	  #btn {
+		margin-top: 1vh;
+		border-radius: 0px;
+		background: red;
+		padding-right: 2.5vh;
+		padding-left: 2.5vh;
+		font-size: 1.6vh;
+	  }
+	}
+  
+	.logo-section {
+	}
+  }
+
+  .footer {
+	margin-top: 5vh;
+	height: 10vh;
+
+	.logo-section {
+	  height: 10vh;
+	  display: flex;
+	  background-color: rgb(216, 212, 212);
+
+	  img {
+		margin: auto;
+	  }
+	}
+
+	.footer-content {
+	  background: rgb(27, 27, 27);
+	  color: white;
+
+	  .footer-category {
+		display: flex;
+		justify-content: center;
+		padding-top: 1vh;
+		padding-bottom: 1vh;
+
+		h6 {
+		  margin: 2vh;
+		}
+	  }
+
+	.footer-list {
+
+	  .col {
+		margin-top: 5vh;
+		margin-bottom: 5vh;
+
+
+		.content {
+		  font-size: 1.4vh;
+		  margin-top: 3vh;
+			.col {
+			  margin-top: 0vh
+			}
+		}
+
+		p {
+		  color: rgb(194, 190, 190);
+		  margin-top: 0.5vh;
+		  margin-bottom: 0.5vh;
+		}
+	  }
+	}
+  }
+
+	.footer-bottom {
+	  background: rgb(19, 19, 19);
+	  display: flex;
+
+	  h6 {
+		margin: auto;
+		padding: 2vh;
+		color: white;
+	  }
+
+	  a {
+		color: gray;
+		text-decoration: none;
+	  }
+
+	  a:hover {
+		color: rgb(78, 78, 78)
+	  }
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.category-content {
+    margin-top: 2vh;
+
+    hr {
+        position: relative;
+        margin-top: -0.5vh;
+        font-weight: 900;
+        border: 2px solid gray;
+    }
+
+    h4 {
+        margin-top: 2vh
+    }
+
+    #red-hr {
+		margin-top: -2vh;
+		font-weight: 900;
+		width: 6vh;
+		border: 2px solid red; 
+	  }
+
+    .card-content {
+		border-radius: 5px;
+		border: 0.1vh solid gray;
+    }
+
+	.card-content:not(:first-child) {
+		margin-top: 5vh;
+	}
+
+    .card {
+        border-radius: 5px;
+        overflow: hidden;
+        position: relative;
+       
+    }
+
+    .card-img-container {
+        position: relative;
+       
+    }
+
+    .card-img-top {
+        width: 100%;
+		height: 55vh;
+		object-fit: cover;
+		object-position: center;
+    }
+
+    .badge {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 10;
+        font-size: 1.7vh;
+    }
+
+    .card-body {
+        padding: 15px;
+    }
+
+    .card-title,
+    .card-text {
+        margin: 0px;
+    }
+
+    .bi {
+        font-size: 3.5vh;
+       
+        margin: 0.6vh;
+       
+        background-color: black;
+        color: white;
+        border-radius: 5px;
+        padding: 0.4vh;
+        display: inline-block;
+        text-align: center;
+        line-height: 1;
+        cursor: pointer;
+    }
+
+    .bi-facebook {
+        background: rgb(68, 68, 141);
+    }
+
+    .bi-instagram {
+        background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    }
+
+    .bi-google {
+        background: rgb(133, 3, 3);
+    }
+
+    .bi-twitter {
+        background: skyblue;
+    }
+
+    .bi-youtube {
+        background-color: red;
+    }
+
+    .bi-linkedin {
+        background: rgb(74, 74, 222);
+    }
+
+    .img-col-add-prime {
+        height: 9vh;
+        width: 100%;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+    }
+    
+    .img-col-add-exclusive {
+        height: 27vh;
+        width: 100%;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+    }
+
+    .img-col-add-elite {
+        height: 27vh;
+        width: 100%;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+    }
+
+    .advertisement-span {
+        color: gray;
+        margin-bottom: 0vh;
+        font-size: 1.2vh;
+        text-align: end;
+		margin-top: 1vh;
+    }
+
+    .col-weather {
+        text-align: center;  
+        margin-top: 2vh;
+		border-radius: 5px;
+		border: 0.1vh solid gray;
+
+        .bi {
+            font-size: 1.3vh;
+           
+            margin: 0.6vh;
+           
+            background-color: white;
+            color: gray;
+            border-radius: 5px;
+            padding: 0.4vh;
+            display: inline-block;
+            text-align: center;
+            line-height: 1;
+            cursor: pointer;
+        }
+    }
+
+	.category-popular-news {
+
+		.card-img-top {
+			width: 100%;
+			height: 20vh;
+			object-fit: cover;
+			object-position: center;
+		}
+
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.error {
+	display: flex;
+	width: 100%;
+	height: 100vh;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+
+	.content {
+		margin: auto;
+	}
+
+	img {
+		margin-bottom: 10vh;
+	}
+	
 }
