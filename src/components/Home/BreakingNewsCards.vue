@@ -68,63 +68,18 @@
 </template>
 
 <script>
+import { fetchNews } from '../../services/newsService';
+
 export default {
     data() {
         return {
             isDesktop: true,
             currentSlide: 0,
-            slides: [
-                {
-                    imgUrl: 'https://themes.themeregion.com/newspress/wp-content/uploads/2016/03/10-1-1-1024x586.jpg',
-                    title: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magnam ad tempore cum iusto asperiores.',
-                    description: 'Mar 17,2016 2.46k'
-                },
-                {
-                    imgUrl: 'https://themes.themeregion.com/newspress/wp-content/uploads/2016/03/10-1-1-1024x586.jpg',
-                    title: 'Second Slide',
-                    description: 'Mar 17,2016 2.46k'
-                },
-                {
-                    imgUrl: 'https://themes.themeregion.com/newspress/wp-content/uploads/2016/03/10-1-1-1024x586.jpg',
-                    title: 'Third Slide',
-                    description: 'Mar 17,2016 2.46k'
-                }
-            ],
-            firstRowCols: [
-                {
-                    cols: 8,
-                    imgUrl: 'https://themes.themeregion.com/newspress/wp-content/uploads/2016/03/10-1-1-1024x586.jpg',
-                    details: 'Mar 17,2016 2.46k',
-                    description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magnam ad tempore cum iusto asperiores.'
-                },
-                {
-                    cols: 4,
-                    imgUrl: 'https://themes.themeregion.com/newspress/wp-content/uploads/2016/03/10-1-1-1024x586.jpg',
-                    details: 'Mar 17,2016 2.46k',
-                    description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magnam ad tempore cum iusto asperiores.'
-                }
-            ],
-            secondRowCols: [
-                {
-                    cols: 4,
-                    imgUrl: 'https://themes.themeregion.com/newspress/wp-content/uploads/2016/03/10-1-1-1024x586.jpg',
-                    details: 'Mar 17,2016 2.46k',
-                    description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magnam ad tempore cum iusto asperiores.'
-                },
-                {
-                    cols: 4,
-                    imgUrl: 'https://themes.themeregion.com/newspress/wp-content/uploads/2016/03/10-1-1-1024x586.jpg',
-                    details: 'Mar 17,2016 2.46k',
-                    description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magnam ad tempore cum iusto asperiores.'
-                },
-                {
-                    cols: 4,
-                    imgUrl: 'https://themes.themeregion.com/newspress/wp-content/uploads/2016/03/10-1-1-1024x586.jpg',
-                    details: 'Mar 17,2016 2.46k',
-                    description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magnam ad tempore cum iusto asperiores.'
-                }
-            ]
-        }
+            slides: [],
+            firstRowCols: [],
+            secondRowCols: [],
+            articles: []
+        };
     },
     methods: {
         setDeviceType() {
@@ -145,16 +100,53 @@ export default {
         updateCarousel() {
             const carousel = this.$el.querySelector('.carousel');
             carousel.style.transform = `translateX(-${this.currentSlide * 100}%)`;
+        },
+        async loadNews() {
+            const params = {
+                q: 'world',
+                sortBy: 'popularity',
+                language: 'en',
+            };
+            try {
+                const data = await fetchNews(params);
+                console.log('Response data:', data); 
+                this.articles = (data.articles || []).filter(article => article.urlToImage);
+                this.processArticles();
+            } catch (error) {
+                console.error('Error loading news:', error);
+            }
+        },
+        processArticles() {
+            this.slides = this.articles.slice(0, 3).map(article => ({
+                imgUrl: article.urlToImage,
+                title: article.title,
+                description: article.publishedAt
+            }));
+
+            this.firstRowCols = this.articles.slice(3, 5).map(article => ({
+                cols: 4,
+                imgUrl: article.urlToImage,
+                details: article.publishedAt,
+                description: article.title
+            }));
+
+            this.secondRowCols = this.articles.slice(5, 8).map(article => ({
+                cols: 4,
+                imgUrl: article.urlToImage,
+                details: article.publishedAt,
+                description: article.title
+            }));
         }
     },
     mounted() {
         this.setDeviceType();
         window.addEventListener("resize", this.setDeviceType);
         this.updateCarousel();
-        setInterval(this.nextSlide, 5000);  // Promijeni slajd svakih 5 sekundi
+        setInterval(this.nextSlide, 5000);  
+        this.loadNews();
     },
     destroyed() {
         window.removeEventListener("resize", this.setDeviceType);
     }
-}
+};
 </script>

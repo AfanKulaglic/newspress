@@ -35,6 +35,6 @@
   </script>
   
   <style>
-  /* Dodajte stilove po potrebi */
+    
   </style>
   
