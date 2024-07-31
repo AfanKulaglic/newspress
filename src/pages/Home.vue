@@ -1,7 +1,9 @@
 <template>
   <b-container>
     <Navbar ref="navbar" />
-    <BreakingNewsTab ref="breakingNewsTab" />
+    <div ref="breakingNewsTabWrapper">
+      <BreakingNewsTab ref="breakingNewsTab" />
+    </div>
     <BreakingNewsCards />
     <AdvertisementCard />
     <LatestNewsCards />
@@ -10,6 +12,7 @@
   </b-container>
   <FooterSection />
 </template>
+
 
 <script>
 import { ref, onMounted } from 'vue';
@@ -35,16 +38,14 @@ export default {
   },
   setup() {
     const navbar = ref(null);
-    const breakingNewsTab = ref(null);
 
     onMounted(() => {
       const navbarHeight = navbar.value.$el.offsetHeight;
-      breakingNewsTab.value.$el.style.marginTop = `${navbarHeight}px`;
+      // This part is optional if you need to adjust styles dynamically
     });
 
     return {
-      navbar,
-      breakingNewsTab
+      navbar
     };
   }
 }

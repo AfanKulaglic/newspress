@@ -1,13 +1,14 @@
 <template>
     <div>
       <div v-if="isDesktop" class="advertisement-card">
-        
         <p class="advertisement-span">Advertisement</p>
         <div class="card" style="background-image: url(https://themes.themeregion.com/newspress/wp-content/uploads/2016/03/add2.jpg);">
         </div>
       </div>
-      <div v-else>
-        <p>Mobile</p>
+      <div v-else class="advertisement-card-mobile">
+        <p class="advertisement-span">Advertisement</p>
+        <div class="card" style="background-image: url(https://themes.themeregion.com/newspress/wp-content/uploads/2016/03/add2.jpg);">
+        </div>
       </div>
     </div>
   </template>
@@ -34,7 +35,4 @@
   };
   </script>
   
-  <style>
-    
-  </style>
   

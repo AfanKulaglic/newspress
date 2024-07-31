@@ -3,7 +3,7 @@
     <hr />
     <hr id="red-hr" />
     <div class="d-flex flex-column">
-        <div v-if="sportsNews.length" class="card-content">
+        <div v-if="sportsNews.length" class="card-content" @click="navigateTo(sportsNews[0].title)">
             <div class="card">
                 <div class="card-img-container" v-if="sportsNews[0].urlToImage">
                     <img :src="sportsNews[0].urlToImage" class="card-img-top" alt="..." @error="skipArticle(0)">
@@ -20,7 +20,7 @@
         <div class="img-col-add-exclusive"
             style="background-image: url(https://themes.themeregion.com/newspress/wp-content/uploads/2016/03/add5.jpg);">
         </div>
-        <div v-for="(item, index) in visibleSports.slice(1, 4)" :key="'more-sports-' + index" class="card-content">
+        <div v-for="(item, index) in visibleSports.slice(1, 4)" :key="'more-sports-' + index" class="card-content" @click="navigateTo(item.title)">
             <div class="card">
                 <div class="card-img-container" v-if="item.urlToImage">
                     <img :src="item.urlToImage" class="card-img-top" alt="..." @error="skipArticle(index + 1)">
@@ -78,6 +78,9 @@ export default {
         skipArticle(index) {
             this.sportsNews.splice(index, 1);
             this.loadValidSportsNews(); 
+        },
+        navigateTo(title) {
+            this.$router.push(`/${title}`);
         }
     },
     mounted() {

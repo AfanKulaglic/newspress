@@ -1,42 +1,34 @@
 <template>
   <div>
-    <div v-if="isDesktop" class="latest-news-cards">
-      <div class="title-and-controls">
-        <h4>Latest News</h4>
-        <div class="carousel-controls">
-          <button @click="prev" class="carousel-cards-control-prev">‹</button>
-          <button @click="next" class="carousel-cards-control-next">›</button>
-        </div>
-      </div>
-      <hr />
-      <hr id="red-hr" />
-      <div class="carousel-cards">
-        <div class="carousel-cards-inner" :style="{ transform: `translateX(-${currentIndex * 25}%)` }">
-          <div class="carousel-cards-item" v-for="(item, index) in items" :key="item.title">
-            <div class="card">
-              <div class="card-img-container">
-                <img :src="item.urlToImage" class="card-img-top" alt="..." @error="handleImageError(index)">
-                <b-badge class="badge" variant="danger">New</b-badge>
-              </div>
-              <div class="card-body">
-                <p class="card-text">{{ item.publishedAt }}</p>
-                <h6 class="card-title">{{ item.title }}</h6>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div v-else>
-      <p>Mobile</p>
-    </div>
+    <LatestNewsCardsDesktop 
+      v-if="isDesktop" 
+      :currentIndex="currentIndex" 
+      :items="items" 
+      :slideWidth="slideWidth" 
+      @update:currentIndex="updateIndex" 
+      @handle-image-error="handleImageError"
+    />
+    <LatestNewsCardsMobile 
+      v-else 
+      :currentIndex="currentIndex" 
+      :items="items" 
+      :slideWidth="slideWidth" 
+      @update:currentIndex="updateIndex" 
+      @handle-image-error="handleImageError"
+    />
   </div>
 </template>
 
 <script>
+import LatestNewsCardsDesktop from '../Desktop/LatestNewsCardsDesktop.vue';
+import LatestNewsCardsMobile from '../Mobile/LatestNewsCardsMobile.vue';
 import { fetchNews } from '../../services/newsService';  
 
 export default {
+  components: {
+    LatestNewsCardsDesktop,
+    LatestNewsCardsMobile
+  },
   data() {
     return {
       isDesktop: true,
@@ -49,6 +41,9 @@ export default {
     totalSlides() {
       return this.items.length;
     },
+    slideWidth() {
+      return this.isDesktop ? 25 : 100;
+    }
   },
   mounted() {
     this.setDeviceType();
@@ -64,19 +59,11 @@ export default {
     setDeviceType() {
       this.isDesktop = window.matchMedia("(min-width: 992px)").matches;
     },
-    next() {
-      if (this.currentIndex < this.totalSlides - 4) {
-        this.currentIndex++;
-      } else {
-        this.currentIndex = 0;
-      }
+    updateIndex(newIndex) {
+      this.currentIndex = newIndex;
     },
-    prev() {
-      if (this.currentIndex > 0) {
-        this.currentIndex--;
-      } else {
-        this.currentIndex = this.totalSlides - 4; 
-      }
+    handleImageError(index) {
+      this.items.splice(index, 1);  
     },
     startCarousel() {
       this.intervalId = setInterval(() => {
@@ -94,7 +81,6 @@ export default {
       };
       try {
         const data = await fetchNews(params);
-        console.log('Response data:', data);  
         this.items = (data.articles || [])
           .filter(article => article.urlToImage) 
           .slice(0, 15); 
@@ -102,9 +88,21 @@ export default {
         console.error('Error loading news:', error);
       }
     },
-    handleImageError(index) {
-      this.items.splice(index, 1);  
+    next() {
+      const maxIndex = this.isDesktop ? this.totalSlides - 4 : this.totalSlides - 1;
+      if (this.currentIndex < maxIndex) {
+        this.currentIndex++;
+      } else {
+        this.currentIndex = 0;
+      }
+    },
+    prev() {
+      if (this.currentIndex > 0) {
+        this.currentIndex--;
+      } else {
+        this.currentIndex = this.isDesktop ? this.totalSlides - 4 : this.totalSlides - 1;
+      }
     }
-  },
+  }
 };
 </script>

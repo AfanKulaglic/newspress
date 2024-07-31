@@ -1,8 +1,8 @@
-<template>    
+<template>
     <h4>Technology</h4>
     <hr />
     <hr id="red-hr" />
-    <div v-if="popularNews.length" class="card-content">
+    <div v-if="popularNews.length" class="card-content" @click="navigateTo(popularNews[0].title)">
         <div class="card">
             <div class="card-img-container" v-if="popularNews[0].urlToImage && !imageError">
                 <img :src="popularNews[0].urlToImage" class="card-img-top" alt="..." @error="imageError = true">
@@ -42,7 +42,7 @@ export default {
             };
             try {
                 const data = await fetchNews(params);
-                const articles = (data.articles || []).filter(article => article.urlToImage); 
+                const articles = (data.articles || []).filter(article => article.urlToImage);
 
                 const validArticles = await Promise.all(articles.map(async article => {
                     try {
@@ -53,9 +53,9 @@ export default {
                     }
                 })).then(results => results.filter(article => article !== null));
 
-                this.popularNews = validArticles.slice(0, 1); 
+                this.popularNews = validArticles.slice(0, 1);
 
-                this.otherTitles = validArticles.slice(1).map(article => article.title).slice(0, 3); 
+                this.otherTitles = validArticles.slice(1).map(article => article.title).slice(0, 3);
             } catch (error) {
                 console.error('Error loading popular news:', error);
             }
@@ -67,6 +67,9 @@ export default {
                 img.onerror = () => reject(false);
                 img.src = url;
             });
+        },
+        navigateTo(title) {
+            this.$router.push(`/${title}`);
         }
     },
     mounted() {

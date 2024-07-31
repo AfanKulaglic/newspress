@@ -30,7 +30,7 @@ export default {
             required: true,
             validator(value) {
                 const validNames = [
-                    'home',
+                    'Home',
                     'Business',
                     'Politics',
                     'Environment',
