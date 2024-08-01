@@ -34,7 +34,7 @@
                 </div>
                 <div class="col-weather">
                     <h5>Sarajevo</h5>
-                    <img src="http://openweathermap.org/img/w/04d.png" />
+                    <img src="https://openweathermap.org/img/w/04d.png" />
                     <p>26°</p>
                     <div class="d-flex justify-content-center">
                         <i class="bi bi-droplet-fill"></i>
